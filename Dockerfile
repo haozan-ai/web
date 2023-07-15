@@ -4,8 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn install
-RUN yarn build
+RUN yarn global add pnpm
+RUN pnpm install
+RUN pnpm run build
 
 EXPOSE 3000
 
