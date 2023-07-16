@@ -39,6 +39,7 @@ jobs:
       - name: 构建并推送
         uses: docker/build-push-action@v3
         with:
+          registry: sgccr.ccs.tencentyun.com/haozan.ai
           context: .
           file: Dockerfile
           push: true
