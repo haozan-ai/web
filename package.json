@@ -3,13 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "fix": "next lint --fix",
+    "dev": "next dev",
     "eslint-fix": "eslint . --fix",
-    "prepare": "husky install ./.husky"
+    "fix": "next lint --fix",
+    "lint": "next lint",
+    "migrate:dev": "dotenv -e .env.local -- prisma migrate dev",
+    "migrate:postgres": "dotenv -e .env -- prisma migrate deploy",
+    "prepare": "husky install ./.husky",
+    "start": "next start"
+  },
+  "lint-staged": {
+    "**/*.js?(x)": [
+      "eslint --fix"
+    ],
+    "**/*.ts?(x)": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.2.32",
@@ -17,6 +27,7 @@
     "@heroicons/react": "^2.0.16",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
+    "@prisma/client": "^5.0.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/node": "18.15.0",
     "@types/react": "18.0.28",
@@ -65,19 +76,12 @@
     "@types/js-cookie": "^3.0.3",
     "@types/negotiator": "^0.6.1",
     "autoprefixer": "^10.4.14",
+    "dotenv": "^16.3.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "lint-staged": "^13.2.2",
     "postcss": "^8.4.21",
     "prettier-plugin-organize-imports": "^3.2.3",
     "prettier-plugin-packagejson": "^2.4.5",
     "tailwindcss": "^3.2.7"
-  },
-  "lint-staged": {
-    "**/*.js?(x)": [
-      "eslint --fix"
-    ],
-    "**/*.ts?(x)": [
-      "eslint --fix"
-    ]
   }
 }
