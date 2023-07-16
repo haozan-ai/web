@@ -11,17 +11,36 @@ datasource db {
 }
 
 model User {
-  email   String  @unique
-  pwd     String
-  id      Int     @id @default(autoincrement())
-  name    String?
-  isAdmin Boolean
+  id        Int      @id @default(autoincrement())
+  name      String?
+  phone     String?  @unique
+  image     String?
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+  @@map(name: "users")
 }
 
-model Apps {
-  id          Int     @id @default(autoincrement())
+model Session {
+  id           Int      @id @default(autoincrement())
+  userId       Int      @map(name: "user_id")
+  expires      DateTime
+  sessionToken String   @unique @map(name: "session_token")
+  accessToken  String   @unique @map(name: "access_token")
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  updatedAt    DateTime @default(now()) @map(name: "updated_at")
+
+  @@map(name: "sessions")
+}
+
+model App {
+  id          Int      @id @default(autoincrement())
   title       String
   description String?
-  APP_ID      String
-  API_KEY     String
+  APP_ID      String   @map(name: "app_id")
+  API_KEY     String   @map(name: "api_key")
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  updatedAt   DateTime @default(now()) @map(name: "updated_at")
+
+  @@map(name: "apps")
 }
