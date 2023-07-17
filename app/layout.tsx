@@ -1,6 +1,7 @@
 import { getLocaleOnServer } from '@/i18n/server'
+import { App } from './App'
 
-import './styles/globals.css'
+import './styles/globals.scss'
 import './styles/markdown.scss'
 
 const LocaleLayout = ({
@@ -10,11 +11,11 @@ const LocaleLayout = ({
 }) => {
   const locale = getLocaleOnServer()
   return (
-    <html lang={locale ?? 'en'} className="h-full">
+    <html lang={locale ?? 'zh-Hans'} className="h-full">
       <body className="h-full">
         <div className="overflow-x-auto">
           <div className="w-screen h-screen min-w-[300px]">
-            {children}
+            <App>{children}</App>
           </div>
         </div>
       </body>
