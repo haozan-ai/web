@@ -14,6 +14,7 @@ model User {
   id        Int      @id @default(autoincrement())
   name      String?
   phone     String   @unique
+  password  String
   image     String?
   isAdmin   Boolean? @map(name: "is_admin")
   createdAt DateTime @default(now()) @map(name: "created_at")
