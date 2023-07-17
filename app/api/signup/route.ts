@@ -10,7 +10,9 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   const { phone, admin } = body as Params;
   try {
-    const ret = await prisma.user.create({ data: { phone, isAdmin: admin } });
+    const ret = await prisma.user.create({
+      data: { phone, password: '123456', isAdmin: admin },
+    });
     if (ret) {
       return NextResponse.json({ id: ret.id });
     }

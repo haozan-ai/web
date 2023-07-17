@@ -17,6 +17,7 @@ export const App: FC<PropsWithChildren> = ({ children }) => {
         }
         return themeConfig
     }, [])
+
     return <StyleProvider
         ssrInline
         hashPriority="high"
