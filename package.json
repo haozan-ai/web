@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.11.1",
+    "@ant-design/icons": "^5.1.4",
     "@formatjs/intl-localematcher": "^0.2.32",
     "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.16",
@@ -50,6 +51,7 @@
     "immer": "^9.0.19",
     "js-cookie": "^3.0.1",
     "katex": "^0.16.7",
+    "lodash-es": "^4.17.21",
     "negotiator": "^0.6.3",
     "next": "13.4.10",
     "next-auth": "^4.22.1",
@@ -78,6 +80,7 @@
     "@faker-js/faker": "^7.6.0",
     "@tailwindcss/typography": "^0.5.9",
     "@types/js-cookie": "^3.0.3",
+    "@types/lodash-es": "^4.17.8",
     "@types/negotiator": "^0.6.1",
     "autoprefixer": "^10.4.14",
     "dotenv-cli": "^7.2.1",

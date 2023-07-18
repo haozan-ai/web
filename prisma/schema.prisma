@@ -14,8 +14,9 @@ model User {
   id        Int      @id @default(autoincrement())
   name      String?
   phone     String   @unique
-  password  String
+  password  String?
   image     String?
+  enable    Boolean? @default(true)
   isAdmin   Boolean? @map(name: "is_admin")
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
@@ -39,8 +40,10 @@ model App {
   id          Int      @id @default(autoincrement())
   title       String
   description String?
+  enable      Boolean? @default(true)
   APP_ID      String   @map(name: "app_id")
   API_KEY     String   @map(name: "api_key")
+  APP_TYPE    String   @map(name: "app_type")
   createdAt   DateTime @default(now()) @map(name: "created_at")
   updatedAt   DateTime @default(now()) @map(name: "updated_at")
 

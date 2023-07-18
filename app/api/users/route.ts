@@ -7,18 +7,16 @@ type Params = {
 };
 
 type BodyParams = {
-  APP_TYPE: string;
-  title: string;
-  APP_ID: string;
-  API_KEY: string;
-  description?: string;
+  name?: string;
+  phone: string;
+  isAdmin?: boolean;
 };
 
 export async function GET(_: NextRequest, { params }: { params: Params }) {
-  const { page = 0, page_size = 10 } = params || {};
+  const { page = 0, page_size = 100 } = params || {};
   try {
-    const count = await prisma.app.count();
-    const ret = await prisma.app.findMany({
+    const count = await prisma.user.count();
+    const ret = await prisma.user.findMany({
       skip: page * page_size,
       take: page_size,
     });
@@ -36,10 +34,17 @@ export async function GET(_: NextRequest, { params }: { params: Params }) {
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { title, APP_TYPE, description, APP_ID, API_KEY } = body as BodyParams;
+  const { name, phone, isAdmin } = body as BodyParams;
   try {
-    const ret = await prisma.app.create({
-      data: { title, APP_TYPE, description, APP_ID, API_KEY },
+    const username = name || phone;
+    const ret = await prisma.user.create({
+      data: {
+        phone,
+        isAdmin,
+        name: username,
+        password: '123456',
+        image: `https://ui-avatars.com/api/?background=1abc9c&rounded=true&name=${username}&color=fff`,
+      },
     });
     if (ret) {
       return NextResponse.json({ id: ret.id });

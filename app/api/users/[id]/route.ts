@@ -2,28 +2,23 @@ import { prisma } from '@/lib/prisma';
 import { NextResponse, type NextRequest } from 'next/server';
 
 type Params = {
-  page: number;
-  page_size: number;
+  id: string;
 };
 
 type BodyParams = {
-  APP_TYPE: string;
-  title: string;
-  APP_ID: string;
-  API_KEY: string;
-  description?: string;
+  name?: string;
+  phone: string;
+  isAdmin?: boolean;
 };
 
 export async function GET(_: NextRequest, { params }: { params: Params }) {
-  const { page = 0, page_size = 10 } = params || {};
+  const { id } = params || {};
   try {
-    const count = await prisma.app.count();
-    const ret = await prisma.app.findMany({
-      skip: page * page_size,
-      take: page_size,
+    const ret = await prisma.user.findUnique({
+      where: { id: parseInt(id) },
     });
     if (ret) {
-      return NextResponse.json({ list: ret, page: page + 1, count });
+      return NextResponse.json({ ...ret });
     }
     return NextResponse.json({}, { status: 500 });
   } catch (error: any) {
@@ -34,12 +29,17 @@ export async function GET(_: NextRequest, { params }: { params: Params }) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Params },
+) {
   const body = await request.json();
-  const { title, APP_TYPE, description, APP_ID, API_KEY } = body as BodyParams;
+  const { id } = params || {};
+  const { name, phone, isAdmin } = body as BodyParams;
   try {
-    const ret = await prisma.app.create({
-      data: { title, APP_TYPE, description, APP_ID, API_KEY },
+    const ret = await prisma.user.update({
+      data: { name, phone, isAdmin },
+      where: { id: parseInt(id) },
     });
     if (ret) {
       return NextResponse.json({ id: ret.id });

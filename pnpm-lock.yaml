@@ -8,6 +8,9 @@ dependencies:
   '@ant-design/cssinjs':
     specifier: ^1.11.1
     version: 1.11.1(react-dom@18.2.0)(react@18.2.0)
+  '@ant-design/icons':
+    specifier: ^5.1.4
+    version: 5.1.4(react-dom@18.2.0)(react@18.2.0)
   '@formatjs/intl-localematcher':
     specifier: ^0.2.32
     version: 0.2.32
@@ -86,6 +89,9 @@ dependencies:
   katex:
     specifier: ^0.16.7
     version: 0.16.7
+  lodash-es:
+    specifier: ^4.17.21
+    version: 4.17.21
   negotiator:
     specifier: ^0.6.3
     version: 0.6.3
@@ -166,6 +172,9 @@ devDependencies:
   '@types/js-cookie':
     specifier: ^3.0.3
     version: 3.0.3
+  '@types/lodash-es':
+    specifier: ^4.17.8
+    version: 4.17.8
   '@types/negotiator':
     specifier: ^0.6.1
     version: 0.6.1
@@ -903,6 +912,16 @@ packages:
   /@types/katex@0.16.1:
     resolution: {integrity: sha512-cwglq2A63Yk082CQk0t8LIoDhZAVgJqkumLyk3grpg3K8sevaDW//Qsspmxj9Sf+97biqt79CfAlPrvizHlP0w==}
     dev: false
+
+  /@types/lodash-es@4.17.8:
+    resolution: {integrity: sha512-euY3XQcZmIzSy7YH5+Unb3b2X12Wtk54YWINBvvGQ5SmMvwb11JQskGsfkH/5HXK77Kr8GF0wkVDIxzAisWtog==}
+    dependencies:
+      '@types/lodash': 4.14.195
+    dev: true
+
+  /@types/lodash@4.14.195:
+    resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
+    dev: true
 
   /@types/mdast@3.0.12:
     resolution: {integrity: sha512-DT+iNIRNX884cx0/Q1ja7NyUPpZuv0KPyL5rGNxm1WC1OtHstl7n4Jb7nk+xacNShQMbczJjt8uFzznpp6kYBg==}
@@ -3559,6 +3578,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: 5.0.0
+
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.castarray@4.4.0:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}

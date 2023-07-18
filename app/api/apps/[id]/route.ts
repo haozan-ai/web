@@ -2,10 +2,11 @@ import { prisma } from '@/lib/prisma';
 import { NextResponse, type NextRequest } from 'next/server';
 
 type Params = {
-  id: number;
+  id: string;
 };
 
 type BodyParams = {
+  APP_TYPE: string;
   title: string;
   APP_ID: string;
   API_KEY: string;
@@ -16,7 +17,7 @@ export async function GET(_: NextRequest, { params }: { params: Params }) {
   const { id } = params || {};
   try {
     const ret = await prisma.app.findUnique({
-      where: { id },
+      where: { id: parseInt(id) },
     });
     if (ret) {
       return NextResponse.json({ ...ret });
@@ -36,11 +37,11 @@ export async function PUT(
 ) {
   const body = await request.json();
   const { id } = params || {};
-  const { title, description, APP_ID, API_KEY } = body as BodyParams;
+  const { title, APP_TYPE, description, APP_ID, API_KEY } = body as BodyParams;
   try {
     const ret = await prisma.app.update({
-      data: { title, description, APP_ID, API_KEY },
-      where: { id },
+      data: { title, APP_TYPE, description, APP_ID, API_KEY },
+      where: { id: parseInt(id) },
     });
     if (ret) {
       return NextResponse.json({ id: ret.id });

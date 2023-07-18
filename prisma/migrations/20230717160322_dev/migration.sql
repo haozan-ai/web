@@ -1,22 +1,12 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Apps` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE "Apps";
-
--- DropTable
-DROP TABLE "User";
-
 -- CreateTable
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
     "name" TEXT,
-    "phone" TEXT,
+    "phone" TEXT NOT NULL,
+    "password" TEXT,
     "image" TEXT,
+    "enable" BOOLEAN DEFAULT true,
+    "is_admin" BOOLEAN,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -41,8 +31,10 @@ CREATE TABLE "apps" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT,
+    "enable" BOOLEAN DEFAULT true,
     "app_id" TEXT NOT NULL,
     "api_key" TEXT NOT NULL,
+    "app_type" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
